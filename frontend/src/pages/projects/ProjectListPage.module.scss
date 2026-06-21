@@ -1,0 +1,94 @@
+@use '@/styles/breakpoints' as bp;
+
+.page {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+.searchBar {
+  margin-bottom: var(--spacing-md);
+  max-width: 320px;
+}
+
+.grid {
+  display: grid;
+  gap: var(--spacing-sm);
+  grid-template-columns: 1fr;
+
+  @include bp.sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include bp.lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  display: block;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  }
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.avatar {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-subtle, #e8f0fe);
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+}
+
+.starBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardName {
+  margin-top: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.cardKey {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.issueCount {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}

@@ -1,0 +1,104 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.svg {
+  display: block;
+  min-height: 200px;
+  max-height: 420px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  overflow: visible;
+}
+
+.nodeG {
+  user-select: none;
+}
+
+.nodeGClickable {
+  cursor: pointer;
+}
+
+.nodeRect {
+  fill: var(--color-bg-elevated);
+  stroke: var(--color-border);
+  stroke-width: 1.5;
+  transition: fill 0.12s, stroke 0.12s;
+}
+
+.nodeRectCurrent {
+  fill: color-mix(in srgb, var(--color-primary) 12%, var(--color-bg-elevated));
+  stroke: var(--color-primary);
+  stroke-width: 2;
+}
+
+.nodeRectHovered {
+  fill: var(--color-bg-hover);
+  stroke: var(--color-primary);
+}
+
+.nodeKey {
+  font-size: 10px;
+  font-weight: 700;
+  fill: var(--color-primary);
+  font-family: var(--font-mono, monospace);
+}
+
+.nodeTitle {
+  font-size: 11px;
+  fill: var(--color-text);
+}
+
+.nodeStatus {
+  font-size: 9px;
+  fill: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.edgeLabel {
+  font-size: 10px;
+  font-style: italic;
+  pointer-events: none;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-xs);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xl) 0;
+  color: var(--color-text-subtle);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
+.emptyHint {
+  font-size: var(--font-size-xs);
+  opacity: 0.7;
+}

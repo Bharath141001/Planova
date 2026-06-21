@@ -1,0 +1,10 @@
+.select {
+  height: 28px;
+  width: auto;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+
+  &.done { color: var(--color-success); }
+}

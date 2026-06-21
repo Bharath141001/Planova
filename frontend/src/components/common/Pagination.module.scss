@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) 0;
+}
+
+.pageInfo {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-subtle);
+  padding: 0 var(--spacing-sm);
+}

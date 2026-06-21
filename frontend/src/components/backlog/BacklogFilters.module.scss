@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.search {
+  width: 224px;
+}
+
+.select {
+  height: 32px;
+  width: auto;
+  font-size: var(--font-size-xs);
+}

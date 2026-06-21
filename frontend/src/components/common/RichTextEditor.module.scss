@@ -1,0 +1,79 @@
+.editorWrap {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-light);
+  }
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-xs);
+}
+
+.toolbarBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover { background: var(--color-bg-sunken); color: var(--color-text-primary); }
+  }
+}
+
+.toolbarBtnActive {
+  background: var(--color-bg-sunken);
+  color: var(--color-text-primary);
+}
+
+.editorContent {
+  padding: var(--spacing-md);
+  min-height: 80px;
+}
+
+.emptyView {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-disabled);
+  margin: 0;
+}
+
+// Applied to TipTap mention nodes via HTMLAttributes
+:global(.mention) {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 0.9em;
+  cursor: default;
+  user-select: none;
+}
+
+// Same chip style inside RichTextView (read-only rendered HTML)
+:global(.rich-text-content .mention) {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 0.9em;
+}

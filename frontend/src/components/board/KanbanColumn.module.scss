@@ -1,0 +1,109 @@
+.collapsed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 40px;
+  flex-shrink: 0;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-sunken);
+  padding: var(--spacing-sm) 0;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: background var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover { background: var(--color-bg-subtle); }
+  }
+}
+
+.collapsedIcon {
+  color: var(--color-text-subtle);
+  flex-shrink: 0;
+}
+
+.collapsedLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  color: var(--color-text-secondary);
+}
+
+.collapsedCount {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 288px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-sunken);
+}
+
+.colHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.colHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.colToggleBtn {
+  display: flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text-subtle);
+  padding: 0;
+  margin-left: -8px;
+}
+
+.colName {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.colCount {
+  border-radius: var(--radius-full);
+  padding: 0 6px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+
+  &.overLimit {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--color-danger);
+  }
+}
+
+.droppable {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 var(--spacing-sm) var(--spacing-sm);
+  min-height: 60px;
+  scrollbar-width: thin;
+  transition: background var(--transition-fast);
+
+  &.dragOver { background: var(--color-primary-light); }
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+  }
+}

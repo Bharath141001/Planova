@@ -1,0 +1,31 @@
+@use '@/styles/breakpoints' as bp;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+
+  h3 {
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+  }
+}
+
+.dateRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+}
+
+.sep {
+  color: var(--color-text-muted);
+}

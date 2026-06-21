@@ -1,0 +1,52 @@
+.topBar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.bulkBar {
+  position: fixed;
+  bottom: var(--spacing-md);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  padding: var(--spacing-sm) var(--spacing-md);
+  box-shadow: var(--shadow-xl);
+}
+
+.bulkLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.bulkSelect {
+  height: 32px;
+  width: auto;
+  font-size: var(--font-size-xs);
+}
+
+.bulkCloseBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text-subtle);
+  transition: color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover { color: var(--color-text-primary); }
+  }
+}

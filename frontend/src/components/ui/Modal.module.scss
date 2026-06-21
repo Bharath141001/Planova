@@ -1,0 +1,112 @@
+@use '@/styles/breakpoints' as bp;
+@use '@/styles/animations';
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  background: rgba(9, 30, 66, 0.54);
+  padding: var(--spacing-lg);
+  padding-top: 8vh;
+  animation: fadeIn var(--transition-fast);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.dialog {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-overlay);
+  animation: scaleIn var(--transition-normal);
+}
+
+.sm  { @include bp.lg { max-width: 448px; } }
+.md  { @include bp.lg { max-width: 512px; } }
+.lg  { @include bp.lg { max-width: 672px; } }
+.xl  { @include bp.lg { max-width: 896px; } }
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-lg);
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.description {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-subtle);
+  line-height: var(--line-height-normal);
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--spacing-xs);
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-bg-sunken);
+      color: var(--color-text-primary);
+    }
+  }
+}
+
+.body {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: var(--spacing-lg);
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar { width: 6px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-lg);
+}

@@ -1,0 +1,108 @@
+@use '@/styles/breakpoints' as bp;
+
+.section {
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-width: 0;
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  min-height: 44px;
+  padding: 0;
+}
+
+.sprintGoal {
+  display: none;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+
+  @include bp.md { display: inline; }
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text-subtle);
+  transition: background var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover { background: var(--color-bg-sunken); }
+  }
+}
+
+.droppable {
+  min-height: 44px;
+  transition: background var(--transition-fast);
+
+  &.dragOver { background: var(--color-primary-light); }
+}
+
+.emptyMsg {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-subtle);
+}
+
+.createBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  min-height: 44px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-bg-sunken);
+      color: var(--color-primary);
+    }
+  }
+}

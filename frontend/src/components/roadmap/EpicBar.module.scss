@@ -1,0 +1,36 @@
+@use '@/styles/breakpoints' as bp;
+
+.bar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 28px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: #fff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
+  transition: transform 0.1s ease;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    transform: scaleY(1.03);
+  }
+}
+
+.fill {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  border-radius: var(--radius-md);
+}
+
+.label {
+  position: relative;
+  padding: 0 var(--spacing-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

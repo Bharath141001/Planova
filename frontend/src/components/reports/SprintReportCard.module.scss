@@ -1,0 +1,63 @@
+@use '@/styles/breakpoints' as bp;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+
+  @include bp.md {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm);
+}
+
+.statValue {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+}
+
+.statLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}
+
+.section {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.sectionCount {
+  color: var(--color-text-subtle);
+}
+
+.sectionBody {
+  padding: 4px;
+}
+
+.empty {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-subtle);
+}

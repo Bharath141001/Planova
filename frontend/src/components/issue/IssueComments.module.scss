@@ -1,0 +1,156 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.composeRow {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.composeBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.composeActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-subtle);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.itemBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.itemMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.authorName {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.timestamp {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}
+
+.commentBody {
+  margin-top: 2px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-sunken);
+  padding: var(--spacing-sm);
+}
+
+.editActions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.reactions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.reactionBtn {
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  padding: 2px 6px;
+  font-size: var(--font-size-xs);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover { background: var(--color-bg-sunken); }
+  }
+}
+
+.reactionBtnActive {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.emojiPicker {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.emojiBtn {
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: transparent;
+  padding: var(--spacing-xs);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover { background: var(--color-bg-sunken); }
+  }
+}
+
+.emojiBtnActive {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text-subtle);
+  transition: color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover { color: var(--color-text-secondary); }
+    &.danger:hover { color: var(--color-danger); }
+  }
+}

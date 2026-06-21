@@ -1,0 +1,119 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.search {
+  width: 224px;
+}
+
+.avatarRow {
+  display: flex;
+  margin-left: -8px;
+
+  &>* { margin-left: 8px; }
+}
+
+.avatarBtn {
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.overflowWrap {
+  position: relative;
+  margin-left: 8px;
+}
+
+.overflowBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-subtle, var(--color-bg-hover));
+  border: 1px solid var(--color-border);
+  color: var(--color-text-subtle);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: unset;
+  min-height: unset;
+
+  &:hover { background: var(--color-bg-hover); color: var(--color-text); }
+}
+
+.overflowMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 100;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.12));
+  min-width: 180px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: var(--spacing-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.overflowItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 6px var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  text-align: left;
+  width: 100%;
+
+  &:hover { background: var(--color-bg-hover); }
+}
+
+.overflowItemActive {
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.filterSelect {
+  height: 32px;
+  width: auto;
+  font-size: var(--font-size-xs);
+}
+
+.right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.swimlaneLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}

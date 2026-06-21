@@ -1,0 +1,49 @@
+.root {
+  width: 256px;
+}
+
+.list {
+  margin-top: var(--spacing-xs);
+  max-height: 224px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+  }
+}
+
+.empty {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-disabled);
+}
+
+.userBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  min-height: 44px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  color: var(--color-text-primary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover { background: var(--color-bg-subtle); }
+  }
+}
+
+.username {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-disabled);
+}

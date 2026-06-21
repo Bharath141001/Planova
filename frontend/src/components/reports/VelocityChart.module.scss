@@ -1,0 +1,23 @@
+@use '@/styles/breakpoints' as bp;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h3 {
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+  }
+}
+
+.avg {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}

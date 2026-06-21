@@ -1,0 +1,126 @@
+@use '@/styles/breakpoints' as bp;
+
+.page {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+.grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: 1fr;
+
+  @include bp.lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.wide {
+  @include bp.lg {
+    grid-column: span 2;
+  }
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.issueRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.dueList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.dueItem {
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--font-size-sm);
+    color: inherit;
+    text-decoration: none;
+
+    &:hover { color: var(--color-primary); }
+  }
+}
+
+.dueKey {
+  font-family: monospace;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}
+
+.dueDate {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}
+
+.starList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: inherit;
+    text-decoration: none;
+
+    &:hover { color: var(--color-primary); }
+  }
+}
+
+.recentWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.recentKey {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2px var(--spacing-sm);
+  font-family: monospace;
+  font-size: var(--font-size-xs);
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+}
+
+.empty {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-subtle);
+}

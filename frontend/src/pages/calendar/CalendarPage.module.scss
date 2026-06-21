@@ -1,0 +1,195 @@
+.page {
+  padding: var(--spacing-md);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: var(--color-bg-hover);
+  }
+}
+
+.monthLabel {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  min-width: 160px;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.todayBtn {
+  padding: 6px 14px;
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: var(--color-bg-hover);
+  }
+}
+
+.issueCount {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-subtle);
+  margin-left: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+}
+
+.dayHeader {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-bg-elevated);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.cell {
+  min-height: 120px;
+  padding: 6px;
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  &:nth-child(7n) {
+    border-right: none;
+  }
+}
+
+.cellOutside {
+  background: var(--color-bg-subtle, var(--color-bg));
+  opacity: 0.5;
+}
+
+.cellToday {
+  background: color-mix(in srgb, var(--color-primary) 5%, var(--color-bg));
+}
+
+.dayNum {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-text-subtle);
+  line-height: 1;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dayNumToday {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.issueList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.issueChip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  overflow: hidden;
+  transition: background 0.12s;
+
+  &:hover {
+    background: var(--color-bg-hover);
+  }
+}
+
+.issueChipIcon {
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.issueChipKey {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-text-subtle);
+  flex-shrink: 0;
+}
+
+.issueChipTitle {
+  font-size: 11px;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.moreChip {
+  font-size: 11px;
+  color: var(--color-text-subtle);
+  padding: 2px 6px;
+}
+
+.loadingOverlay {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+}

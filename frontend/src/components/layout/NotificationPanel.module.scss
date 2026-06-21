@@ -1,0 +1,130 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+}
+
+.panel {
+  position: absolute;
+  right: 0;
+  top: 48px;
+  z-index: 50;
+  width: 384px;
+  max-width: 92vw;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-xl);
+  animation: scaleIn 0.12s ease-out;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.panelTitle {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.markAllBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  min-height: 44px;
+  padding: 0 var(--spacing-xs);
+
+  @media (hover: hover) {
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.list {
+  max-height: 70vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+  }
+}
+
+.emptyWrap {
+  padding: var(--spacing-md);
+}
+
+.notifItem {
+  display: flex;
+  gap: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+
+  &:last-child { border-bottom: none; }
+
+  @media (hover: hover) {
+    &:hover { background: var(--color-bg-sunken); }
+  }
+
+  &.unread { background: var(--color-primary-light); }
+}
+
+.notifBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.notifText {
+  line-height: var(--line-height-snug);
+  margin: 0;
+}
+
+.notifSender {
+  font-weight: var(--font-weight-medium);
+}
+
+.notifTime {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+  margin-top: 2px;
+}
+
+.markReadBtn {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-text-subtle);
+  transition: color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover { color: var(--color-primary); }
+  }
+}

@@ -1,0 +1,99 @@
+@use '@/styles/breakpoints' as bp;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.inviteSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inviteLabel {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.inviteRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.inviteInput {
+  flex: 1;
+  min-width: 0;
+}
+
+.inviteRole {
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.tableWrap {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  font-size: var(--font-size-sm);
+  border-collapse: collapse;
+
+  tbody tr {
+    border-bottom: 1px solid var(--color-border-subtle);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    vertical-align: middle;
+  }
+}
+
+.memberCell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.memberName {
+  font-weight: 500;
+}
+
+.memberEmail {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    color: var(--color-danger);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}

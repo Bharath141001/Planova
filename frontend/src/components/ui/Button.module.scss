@@ -1,0 +1,133 @@
+@use '@/styles/breakpoints' as bp;
+@use '@/styles/animations';
+
+// ─── Base ─────────────────────────────────────────────
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &.loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// ─── Size variants ────────────────────────────────────
+.sm {
+  height: 32px;
+  min-height: 44px;
+  padding: 0 var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.md {
+  height: 36px;
+  min-height: 44px;
+  padding: 0 var(--spacing-lg);
+  font-size: var(--font-size-md);
+}
+
+.lg {
+  height: 40px;
+  min-height: 44px;
+  padding: 0 var(--spacing-xl);
+  font-size: var(--font-size-md);
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: var(--font-size-md);
+  flex-shrink: 0;
+}
+
+// ─── Color variants ───────────────────────────────────
+.primary {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border: 1px solid transparent;
+
+  @media (hover: hover) {
+    &:hover:not(:disabled) { background: var(--color-primary-hover); }
+  }
+}
+
+.secondary {
+  background: var(--color-bg-sunken);
+  color: var(--color-text-primary);
+  border: 1px solid transparent;
+
+  @media (hover: hover) {
+    &:hover:not(:disabled) { background: var(--color-border); }
+  }
+}
+
+.outline {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+
+  @media (hover: hover) {
+    &:hover:not(:disabled) { background: var(--color-bg-sunken); }
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid transparent;
+
+  @media (hover: hover) {
+    &:hover:not(:disabled) { background: var(--color-bg-sunken); }
+  }
+}
+
+.danger {
+  background: var(--color-danger);
+  color: var(--color-text-inverse);
+  border: 1px solid transparent;
+
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--color-danger-bg);
+      color: var(--color-danger);
+    }
+  }
+}
+
+.link {
+  background: transparent;
+  color: var(--color-text-link);
+  border: 1px solid transparent;
+  text-underline-offset: 4px;
+
+  @media (hover: hover) {
+    &:hover:not(:disabled) { text-decoration: underline; }
+  }
+}
+
+// ─── Spinner ──────────────────────────────────────────
+.spinner {
+  animation: spin 1s linear infinite;
+  flex-shrink: 0;
+}

@@ -1,0 +1,43 @@
+@use '@/styles/breakpoints' as bp;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dangerZone {
+  border: 1px solid var(--color-danger-border, #fca5a5);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+}
+
+.dangerTitle {
+  font-weight: 600;
+  color: var(--color-danger);
+}
+
+.dangerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}

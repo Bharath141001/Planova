@@ -1,0 +1,60 @@
+@use '@/styles/breakpoints' as bp;
+
+%avatar-base {
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+  outline: 2px solid var(--color-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.xs  { @extend %avatar-base; width: 20px; height: 20px; font-size: 9px; }
+.sm  { @extend %avatar-base; width: 24px; height: 24px; font-size: 10px; }
+.md  { @extend %avatar-base; width: 32px; height: 32px; font-size: var(--font-size-xs); }
+.lg  { @extend %avatar-base; width: 48px; height: 48px; font-size: var(--font-size-lg); }
+
+.image {
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+  outline: 2px solid var(--color-bg);
+  display: block;
+}
+
+.fallback {
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  outline: 2px solid var(--color-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-inverse);
+}
+
+.group {
+  display: flex;
+  margin-left: var(--spacing-sm);
+
+  & > * {
+    margin-left: calc(-1 * var(--spacing-sm));
+  }
+}
+
+.extraCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-sunken);
+  color: var(--color-text-secondary);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  flex-shrink: 0;
+  outline: 2px solid var(--color-bg);
+  margin-left: calc(-1 * var(--spacing-sm));
+}

@@ -1,0 +1,70 @@
+@use '@/styles/breakpoints' as bp;
+
+%input-base {
+  display: flex;
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: 0 var(--spacing-md);
+  height: 36px;
+  font-size: var(--font-size-md);
+  font-family: var(--font-family);
+  color: var(--color-text-primary);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-text-disabled);
+  }
+
+  &:focus-visible,
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-light);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.input {
+  @extend %input-base;
+}
+
+.textarea {
+  @extend %input-base;
+  height: auto;
+  min-height: 80px;
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  resize: vertical;
+}
+
+.select {
+  @extend %input-base;
+  cursor: pointer;
+  padding-right: var(--spacing-3xl);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23626F86' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.fieldError {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  color: var(--color-danger);
+}
