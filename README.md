@@ -1,4 +1,4 @@
-# Jira Clone — Project Management & Sprint Planning
+# Planova — Project Management & Sprint Planning
 
 A full-stack, Jira-like application: Kanban boards, Scrum backlogs, sprint
 planning, roadmaps, reports, real-time collaboration, and role-based
