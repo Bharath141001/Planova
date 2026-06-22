@@ -4,7 +4,7 @@ Deploy Planova for **free, forever, no sleeping** using:
 
 | What | Service | Cost |
 |---|---|---|
-| Your backend (Node.js API) | Google Cloud (GCP) e2-micro VM | $0 forever |
+| Your backend (Node.js API) | Oracle Cloud VM | $0 forever |
 | Your database (Postgres) | Neon | $0 forever |
 | Your cache (Redis) | Upstash | $0 forever |
 | Your frontend (React app) | Vercel | $0 forever |
@@ -80,86 +80,86 @@ rediss://default:XXXX@global-smiling-xxx.upstash.io:6379
 
 ---
 
-## Phase 3 — Set Up Your Free Server (Google Cloud)
+## Phase 3 — Set Up Your Free Server (Oracle Cloud)
 
-> Google gives you a real server computer (e2-micro), free forever on the Always Free tier. It's like having a PC in a data center that never turns off and costs you nothing.
+> Oracle gives you a real server computer, free forever. It's like having a PC in a data center that never turns off and costs you nothing.
 
-### Step 5 — Create a Google Cloud account
+### Step 5 — Create an Oracle Cloud account
 
-1. Go to [cloud.google.com](https://cloud.google.com)
-2. Click **Get started for free**
-3. Sign in with your Google account
-4. Enter your credit card details — Google uses this for identity verification. You will **not** be charged on the Always Free tier.
-5. You'll also receive a **$300 trial credit** (valid 90 days) — ignore it for now; the e2-micro is free even after the trial ends.
+1. Go to [oracle.com/cloud/free](https://www.oracle.com/cloud/free/)
+2. Click **Start for free**
+3. Fill in your name, email, and country
+4. **Choose your home region** — pick the one closest to you. **You cannot change this later.**
+5. Enter your credit card details — Oracle uses this for identity verification only. You will **not** be charged on the Always Free tier.
+6. Complete the sign-up and wait for the confirmation email (usually 5–15 minutes)
 
-> **Why a credit card?** Google needs to verify you're a real person. The Always Free e2-micro has hard limits and you won't be billed unless you manually upgrade to a paid plan.
+> **Why a credit card?** Oracle needs to verify you're a real person. The Always Free tier has hard limits and you won't be billed unless you manually upgrade.
 
 ### Step 6 — Create a free virtual machine
 
-1. Log into [console.cloud.google.com](https://console.cloud.google.com)
-2. In the top search bar, type **VM instances** and click it
-3. If prompted, click **Enable** to activate the Compute Engine API (takes ~1 minute)
-4. Click **Create Instance**
-5. Set **Name** to `planova-server`
-6. Under **Region**, pick one of these **— you must choose a US region for the free tier:**
-   - `us-east1 (South Carolina)` — closest for India too (lower latency than you'd expect)
-   - `us-west1 (Oregon)`
-   - `us-central1 (Iowa)`
-7. Under **Machine configuration**:
-   - Series: **E2**
-   - Machine type: **e2-micro** (2 vCPU shared, 1 GB RAM)
-8. Under **Boot disk**, click **Change**:
-   - Operating system: **Ubuntu**
-   - Version: **Ubuntu 22.04 LTS**
-   - Boot disk size: `30 GB` (stays within the free 30 GB limit)
-   - Click **Select**
-9. Under **Firewall**, check both:
-   - ✅ **Allow HTTP traffic**
-   - ✅ **Allow HTTPS traffic**
-10. Click **Create** and wait about 1 minute
+1. Log into [cloud.oracle.com](https://cloud.oracle.com)
+2. In the top search bar, type **Instances** and click it
+3. Click **Create Instance**
+4. Set **Name** to `planova-server`
+5. Under **Image and shape**, click **Change image**:
+   - Select **Ubuntu**
+   - Select **Ubuntu 22.04** (the LTS version)
+   - Click **Select image**
+6. Click **Change shape**:
+   - Select **Ampere** (ARM processor)
+   - Select **VM.Standard.A1.Flex**
+   - Set **OCPUs** to `4` and **Memory** to `24 GB`
+   - Click **Select shape**
+7. Under **Add SSH keys**, click **Generate a key pair for me**
+8. Click **Save private key** — this downloads a `.key` file to your computer
+9. Click **Create** and wait about 2 minutes
 
-> **Free tier rule:** The e2-micro is free only in `us-east1`, `us-west1`, or `us-central1`. Any other region will incur charges.
+> **What is SSH?** It's like a secure remote control for your server. The `.key` file is the only "key" to get in — if you lose it, you're locked out. Save it somewhere safe like `Documents/oracle-keys/`.
 
 ### Step 7 — Copy your server's IP address
 
-1. Once the instance shows a green checkmark, look at the **External IP** column
-2. Copy it and save it in your Notepad — it looks like `34.75.xx.xx`
-
-> This IP address can change if you stop and restart the VM. To make it permanent (still free), click the IP → **Reserve static address**.
+1. Once the instance shows **Running** (green dot), click on its name
+2. Find the **Public IP address** on the right side
+3. Copy it and save it in your Notepad — it looks like `150.230.xx.xx`
 
 ### Step 8 — Open the firewall for your backend
 
-By default GCP only allows HTTP/HTTPS. We need to open port 4000 for your backend.
+By default Oracle blocks all incoming traffic. We need to open the port your backend listens on.
 
-1. In the left sidebar, go to **VPC network → Firewall**
-2. Click **Create Firewall Rule**
-3. Fill in:
-   - **Name:** `planova-backend-4000`
-   - **Direction of traffic:** Ingress
-   - **Targets:** All instances in the network
-   - **Source IPv4 ranges:** `0.0.0.0/0`
-   - **Protocols and ports:** select **TCP** and enter `4000`
-4. Click **Create**
+1. On your instance page, click the link next to **Virtual cloud network** (looks like `vcn-XXXXXXXX`)
+2. On the left sidebar, click **Security Lists**
+3. Click the one called **Default Security List for...**
+4. Click **Add Ingress Rules**
+5. Add this rule:
+   - **Source CIDR:** `0.0.0.0/0`
+   - **IP Protocol:** `TCP`
+   - **Destination Port Range:** `4000`
+   - **Description:** `Planova backend`
+6. Click **Add Ingress Rules** to save
 
 > **What is a port?** Think of your server as an apartment building. Port 4000 is the apartment number where your backend lives. Opening it means traffic is allowed to reach that apartment.
 
 ### Step 9 — Connect to your server
 
-GCP has a built-in browser SSH — no `.key` files needed.
+On your Windows PC, open **Command Prompt** (press `Win + R`, type `cmd`, press Enter) and run:
 
-1. Go back to **Compute Engine → VM instances**
-2. Find your `planova-server` row
-3. In the **Connect** column, click **SSH** — a browser terminal opens automatically
-
-You should see a prompt like:
-
-```
-bharathr@planova-server:~$
+```cmd
+:: Replace C:\Users\BharathR\Downloads\ssh-key.key with the actual path to your .key file
+:: Replace 150.230.xx.xx with your actual Oracle IP address
+ssh -i "C:\Users\BharathR\Downloads\ssh-key.key" ubuntu@150.230.xx.xx
 ```
 
-This means you're inside your server. Everything you type now runs on the Google computer in the cloud.
+If it asks **"Are you sure you want to continue connecting?"** — type `yes` and press Enter.
 
-> **Alternative (command line):** If you prefer the terminal, install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install) and run `gcloud compute ssh planova-server --zone YOUR_ZONE`.
+You should now see a prompt like:
+
+```
+ubuntu@planova-server:~$
+```
+
+This means you're inside your server. Everything you type now runs on the Oracle computer in the cloud.
+
+> **Troubleshooting:** If you get `WARNING: UNPROTECTED PRIVATE KEY FILE`, right-click the `.key` file → Properties → Security tab → make sure only your Windows user account has access.
 
 ### Step 10 — Install Docker
 
@@ -252,10 +252,10 @@ docker logs planova-backend --tail 30
 Open your browser and go to:
 
 ```
-http://YOUR_GCP_IP:4000/health
+http://YOUR_ORACLE_IP:4000/health
 ```
 
-Replace `YOUR_GCP_IP` with your actual IP from Step 7. If you see a JSON response, your backend is live.
+Replace `YOUR_ORACLE_IP` with your actual IP. If you see a JSON response, your backend is live.
 
 ---
 
@@ -275,10 +275,10 @@ Replace `YOUR_GCP_IP` with your actual IP from Step 7. If you see a JSON respons
 
 | Variable Name | Value |
 |---|---|
-| `VITE_API_URL` | `http://YOUR_GCP_IP:4000/api` |
-| `VITE_SOCKET_URL` | `http://YOUR_GCP_IP:4000` |
+| `VITE_API_URL` | `http://YOUR_ORACLE_IP:4000/api` |
+| `VITE_SOCKET_URL` | `http://YOUR_ORACLE_IP:4000` |
 
-   Replace `YOUR_GCP_IP` with your actual GCP IP from Step 7.
+   Replace `YOUR_ORACLE_IP` with your actual Oracle IP from Step 7.
 
 8. Click **Deploy** — takes about 2 minutes
 9. When done, you'll get a URL like `https://planova-abc123.vercel.app`
@@ -306,7 +306,7 @@ docker restart planova-backend
 
 Go through each of these to confirm:
 
-- [ ] `http://YOUR_GCP_IP:4000/health` returns JSON in the browser
+- [ ] `http://YOUR_ORACLE_IP:4000/health` returns JSON in the browser
 - [ ] Your Vercel URL loads the Planova login page
 - [ ] You can create an account and log in
 - [ ] You can create a project and add tasks (confirms Neon DB is connected)
@@ -351,7 +351,7 @@ docker ps
 
 | Service | Cost | Free Limit |
 |---|---|---|
-| GCP e2-micro VM | $0 forever | 2 shared vCPU, 1 GB RAM, 30 GB disk |
+| Oracle Cloud VM | $0 forever | 4 CPU, 24 GB RAM |
 | Neon Postgres | $0 forever | 0.5 GB storage |
 | Upstash Redis | $0 forever | 10,000 requests/day |
 | Vercel Frontend | $0 forever | 100 GB bandwidth/month |
