@@ -147,3 +147,17 @@ docker-compose.yml
 
 **backend:** `dev`, `build`, `start`, `seed`, `prisma:migrate`, `prisma:studio`, `test`
 **frontend:** `dev`, `build`, `preview`, `typecheck`, `lint`
+
+---
+
+## Claude Code skills
+
+Project-specific slash commands for Claude Code, stored in `.claude/skills/`.
+
+| Skill | Description |
+| --- | --- |
+| `/new-component` | Scaffold a React component + `.module.scss` pair in `frontend/src/components/`. Creates a named export with `styles.root` wrapper and BEM-lite SCSS scoping — no styled-components. |
+| `/new-page` | Scaffold a new page component + `.module.scss` under `frontend/src/pages/`, then walk through registering the route in `AppRouter.tsx` and adding a sidebar link. |
+| `/new-feature` | Full-stack scaffold for a new feature: backend service → controller → route file, plus a TanStack Query hook and React component on the frontend. Includes reminders for `app.ts` registration and permissions sync. |
+| `/run` | Start the dev environment — local two-server mode (`backend` on :4000, `frontend` on :5173) or the full Docker stack. |
+| `/db-migrate` | Prisma migration workflow: edit schema → `migrate dev` → `generate` → re-seed, plus a cheat-sheet of common Prisma commands. |
